@@ -1,0 +1,34 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowLogCreation",
+      "Effect": "Allow",
+      "Action": [
+          "logs:PutLogEvents",
+          "logs:CreateLogGroup",
+          "logs:CreateLogStream"
+      ],
+      "Resource": "arn:aws:logs:${region}:${account_id}:*"
+    },
+    {
+      "Sid": "AllowManifestRetrieval",
+      "Effect": "Allow",
+      "Action": [
+          "s3:GetObject"
+      ],
+      "Resource": [
+        "arn:aws:s3:::${bucket_name}/*",
+        "arn:aws:s3:::${bucket_name}"
+      ]
+    },
+    {
+      "Sid": "AllowSecretsAccess",
+      "Effect": "Allow",
+      "Action": [
+          "secretsmanager:*"
+      ],
+      "Resource": ["${secret_arn}"]
+    }
+  ]
+}

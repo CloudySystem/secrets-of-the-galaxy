@@ -1,0 +1,5 @@
+.terraform/
+*.tfstate*
+*.tfvars
+.DS_Store
+node_modules/
